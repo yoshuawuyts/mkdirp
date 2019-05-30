@@ -1,12 +1,13 @@
 language: rust
 rust:
-  - nightly
+  - stable
+  - beta
 
 before_script: |
-  rustup component add rustfmt-preview &&
-  cargo install clippy -f
+  rustup component add rustfmt &&
+  rustup component add clippy
 script: |
-  cargo fmt -- --write-mode=diff &&
+  cargo fmt -- --check &&
   cargo clippy -- -D clippy &&
   cargo build --verbose &&
   cargo test  --verbose
