@@ -6,7 +6,11 @@ use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
 
-/// Create a new directory, ignore if it already exists. Returns the first created directory if some of the paths already existed, `None` if no new directories were created.
+/// Create a new directory, ignore if it already exists.
+///
+/// Returns the first created directory if some of the
+/// paths already existed, `None` if no new directories
+/// were created.
 pub fn mkdirp<P: AsRef<Path>>(path: P) -> io::Result<Option<PathBuf>> {
   let path = path.as_ref();
   if path == Path::new("") {
@@ -41,7 +45,7 @@ pub fn mkdirp<P: AsRef<Path>>(path: P) -> io::Result<Option<PathBuf>> {
 mod tests {
   use super::*;
   #[test]
-  fn basic() {
+  fn return_dir() {
     let mut dir = std::env::temp_dir();
     dir.push("mkdirp-test");
     let test_path = dir.clone();
