@@ -41,7 +41,7 @@ pub fn mkdirp<P: AsRef<Path>>(path: P) -> io::Result<Option<PathBuf>> {
 mod tests {
   use super::*;
   #[test]
-  fn basic_test() {
+  fn basic() {
     let mut dir = std::env::temp_dir();
     dir.push("mkdirp-test");
     let test_path = dir.clone();
@@ -50,8 +50,16 @@ mod tests {
     dir.push("nested-1");
     let expected = dir.clone();
     dir.push("nested-2");
+    dir.push("nested-3");
     let ret = mkdirp(dir.as_path()).unwrap().unwrap();
     fs::remove_dir_all(test_path).unwrap();
     assert_eq!(ret, expected);
+  }
+
+  #[test]
+  fn noop() {
+    let dir = std::env::temp_dir();
+    let ret = mkdirp(dir.as_path()).unwrap();
+    assert_eq!(ret, None);
   }
 }
