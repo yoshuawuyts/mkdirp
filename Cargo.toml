@@ -1,10 +1,10 @@
 [package]
 name = "mkdirp"
-version = "0.1.0"
+version = "1.0.0"
 license = "Apache-2.0"
 repository = "https://github.com/yoshuawuyts/mkdirp"
 documentation = "https://docs.rs/mkdirp"
 description = "mkdir -p"
-authors = ["yoshuawuyts <yoshuawuyts@gmail.com>"]
+authors = ["yoshuawuyts <yoshuawuyts@gmail.com>", "Kat Marchán <kzm@zkat.tech>"]
 
 [dependencies]
